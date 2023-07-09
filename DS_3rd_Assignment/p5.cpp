@@ -21,7 +21,7 @@ int main()
     while (t--)
     {
         int size;
-        char prev;
+        // char prev;
         cin >> size;
         string s;
         cin >> s;
