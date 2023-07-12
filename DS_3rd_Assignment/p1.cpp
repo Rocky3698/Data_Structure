@@ -152,7 +152,6 @@ public:
 };
 int main()
 {
-    //drive code
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
@@ -173,7 +172,11 @@ int main()
         cin >> x;
         Q.push(x);
     }
-
+    // while(!Q.empty()){
+    //     cout<<S.top()<<" "<<Q.front()<<endl;
+    //     Q.pop();
+    //     S.pop();
+    // }
     Node *head = NULL;
     Node *tail = NULL;
     Node *head1 = NULL;
