@@ -16,5 +16,6 @@ int main()
         cout << st.top() << endl;
         st.pop();
     }
+
     return 0;
 }
