@@ -14,6 +14,33 @@ public:
         this->right = NULL;
     }
 };
+void preOrder(Node *root)
+{
+    // root->left->right
+    if (root == NULL)
+        return;
+    cout << root->val << " ";
+    preOrder(root->left);
+    preOrder(root->right);
+}
+void PostOrder(Node *root)
+{
+    // left->right->root
+    if (root == NULL)
+        return;
+    PostOrder(root->left);
+    PostOrder(root->right);
+    cout << root->val << " ";
+}
+void InOrder(Node *root)
+{
+    // left->root->right
+    if (root == NULL)
+        return;
+    InOrder(root->left);
+    cout << root->val << " ";
+    InOrder(root->right);
+}
 
 Node *input_tree()
 {
@@ -57,6 +84,12 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    Node *root= input_tree();
+    Node *root = input_tree();
+    preOrder(root);
+    cout << endl;
+    PostOrder(root);
+    cout << endl;
+    InOrder(root);
+    cout << endl;
     return 0;
 }

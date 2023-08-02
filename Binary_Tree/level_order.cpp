@@ -14,7 +14,27 @@ public:
         this->right = NULL;
     }
 };
+void level_order(Node *root)
+{
+    queue<Node *> q;
+    if (root)
+        q.push(root);
+    while (!q.empty())
+    {
+        // 1. ber kore ana
+        Node *f = q.front();
+        q.pop();
 
+        // 2. jabotiyo kaj
+        cout << f->val << " ";
+
+        // 3. childreen gula push kora
+        if (f->left)
+            q.push(f->left);
+        if (f->right)
+            q.push(f->right);
+    }
+}
 Node *input_tree()
 {
     int val;
@@ -31,10 +51,11 @@ Node *input_tree()
     {
         Node *f = q.front();
         q.pop();
+
         int l, r;
-        cin >> l >> r;
         Node *left;
         Node *right;
+        cin >> l >> r;
         if (l == -1)
             left = NULL;
         else
@@ -45,6 +66,7 @@ Node *input_tree()
             right = new Node(r);
         f->left = left;
         f->right = right;
+
         if (f->left)
             q.push(f->left);
         if (f->right)
@@ -57,6 +79,7 @@ int main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    Node *root= input_tree();
+    Node *root=input_tree();
+    level_order(root);
     return 0;
 }

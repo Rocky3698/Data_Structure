@@ -14,7 +14,6 @@ public:
         this->right = NULL;
     }
 };
-
 Node *input_tree()
 {
     int val;
@@ -31,10 +30,11 @@ Node *input_tree()
     {
         Node *f = q.front();
         q.pop();
+
         int l, r;
-        cin >> l >> r;
         Node *left;
         Node *right;
+        cin >> l >> r;
         if (l == -1)
             left = NULL;
         else
@@ -45,6 +45,7 @@ Node *input_tree()
             right = new Node(r);
         f->left = left;
         f->right = right;
+
         if (f->left)
             q.push(f->left);
         if (f->right)
@@ -52,11 +53,23 @@ Node *input_tree()
     }
     return root;
 }
+bool search(Node *root, int x)
+{
+    if (root == NULL)
+        return false;
+    if (root->val == x)
+        return true;
+    if (x < root->val)
+        return search(root->left, x);
+    else
+        return search(root->right, x);
+}
 int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    Node *root= input_tree();
+    Node *root=input_tree();
+    
     return 0;
 }

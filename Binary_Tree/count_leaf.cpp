@@ -14,7 +14,6 @@ public:
         this->right = NULL;
     }
 };
-
 Node *input_tree()
 {
     int val;
@@ -31,10 +30,11 @@ Node *input_tree()
     {
         Node *f = q.front();
         q.pop();
+
         int l, r;
-        cin >> l >> r;
         Node *left;
         Node *right;
+        cin >> l >> r;
         if (l == -1)
             left = NULL;
         else
@@ -45,6 +45,7 @@ Node *input_tree()
             right = new Node(r);
         f->left = left;
         f->right = right;
+
         if (f->left)
             q.push(f->left);
         if (f->right)
@@ -52,11 +53,22 @@ Node *input_tree()
     }
     return root;
 }
+int count_leaf(Node *root)
+{
+    if (root == NULL)
+        return 0;
+    if (root->left == NULL && root->right == NULL)
+        return 1;
+    int l = count_leaf(root->left);
+    int r = count_leaf(root->right);
+    return l + r;
+}
 int main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    Node *root= input_tree();
+    Node *root=input_tree();
+    cout<<count_leaf(root)<<endl;
     return 0;
 }
