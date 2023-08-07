@@ -4,7 +4,7 @@ using namespace std;
 
 class TreeNode
 {
-    public:
+public:
     int val;
     TreeNode *left;
     TreeNode *right;
