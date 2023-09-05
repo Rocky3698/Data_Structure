@@ -1,31 +1,47 @@
-#include<stdio.h>
+#include <bits/stdc++.h>
+using namespace std;
+#define endl "\n"
 int main()
 {
-    int age = 25;
-    if (age >= 18)
-        printf("You are an adult");
-    else
-        printf("You are a minor");
-    return 0;
-}
-int main()
-{
-    for (int i = 0; i < 5; i++)
-    {
-        if (i == 3)
-            break;
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
 
-        printf("%d",i);
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int n;
+        cin >> n;
+        vector<int> v;
+        vector<int> v2;
+        for (int i = 0; i < n; i++)
+        {
+            int x;
+            cin >> x;
+            v.emplace_back(x);
+            v2.emplace_back(x);
+        }
+        sort(v.begin(), v.end());
+        int Min = v[0];
+        int Max = v[v.size() - 1];
+        int maxpos = 0;
+        int minpos = 0;
+        int i = -1;
+        for (int x : v2)
+        {
+            i++;
+            if (x == Max)
+            {
+                maxpos = v.size() - 1 - i-minpos;
+            }
+            else if (x == Min)
+            {
+                minpos = i;
+            }
+        }
+        cout << max(maxpos, minpos) << endl;
     }
-    return 0;
-}
-int main()
-{
-    int a = 10;
-    int b = 20;
-    if (a > b)
-        printf("True");
-    else
-        printf("False");
+
     return 0;
 }
